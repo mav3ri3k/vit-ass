@@ -1,0 +1,29 @@
+{
+  "version": "4",
+  "specifiers": {
+    "npm:@lezer/markdown@^1.4.0": "1.4.0"
+  },
+  "npm": {
+    "@lezer/common@1.2.3": {
+      "integrity": "sha512-w7ojc8ejBqr2REPsWxJjrMFsA/ysDCFICn8zEOR9mrqzOu2amhITYuLD8ag6XZf0CFXDrhKqw7+tW8cX66NaDA=="
+    },
+    "@lezer/highlight@1.2.1": {
+      "integrity": "sha512-Z5duk4RN/3zuVO7Jq0pGLJ3qynpxUVsh7IbUbGj88+uV2ApSAn6kWg2au3iJb+0Zi7kKtqffIESgNcRXWZWmSA==",
+      "dependencies": [
+        "@lezer/common"
+      ]
+    },
+    "@lezer/markdown@1.4.0": {
+      "integrity": "sha512-mk4MYeq6ZQdxgsgRAe0G7kqPRV6Desajfa14TcHoGGXIqqj1/2ARN31VFpmrXDgvXiGBWpA7RXtv0he+UdTkGw==",
+      "dependencies": [
+        "@lezer/common",
+        "@lezer/highlight"
+      ]
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "npm:@lezer/markdown@^1.4.0"
+    ]
+  }
+}

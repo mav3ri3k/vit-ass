@@ -118,7 +118,7 @@ margin: 2cm,
     #align(center)[
       #image("title.png", width: 35em)
       #text(size: 17pt, weight: "semibold", fill: rgb("#383434"))[
-        B.Tech. Winter Semester 2023-24\
+        B.Tech. Winter Semester 2024-25\
         School Of Computer Science and Engineering\
         (SCOPE)\
       ]
