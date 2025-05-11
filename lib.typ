@@ -64,6 +64,7 @@
   show highlight: it => text(fill: blue)[*#it.body*]
 
   show raw: code => if code.block [
+    #set text(font: "JetBrainsMono NF", fallback: false, size: 11pt)
     #show raw.line: line => {
       box(width: radius)[
         #align(right)[
@@ -75,6 +76,7 @@
     }
     #code
   ] else [
+    #set text(font: "JetBrainsMono NF", fallback: false, size: 11pt)
     #box(
       fill: rgb("#f2f4f7"),
       outset: (x: 2pt, y: 3pt),
@@ -82,7 +84,7 @@
     )[#code]
   ]
 
-  set text(font: "JetBrainsMono NF", fallback: false, size: 12pt)
+  set text(font: "Nebula Sans", fallback: false, size: 12pt)
 
   // rounded images
   show image: it => block(
@@ -99,7 +101,7 @@ margin: 2cm,
   )
   // TODO: verificar se há necessidade de colocar espaçamento de 1.5
   set par(
-    first-line-indent: 1.5cm,
+    first-line-indent: 0cm,
     justify: true,
     leading: 0.65em,
     linebreaks: "optimized",
@@ -118,7 +120,7 @@ margin: 2cm,
     #align(center)[
       #image("title.png", width: 35em)
       #text(size: 17pt, weight: "semibold", fill: rgb("#383434"))[
-        B.Tech. Winter Semester 2024-25\
+        B.Tech. Fall Semester 2025-26\
         School Of Computer Science and Engineering\
         (SCOPE)\
       ]
