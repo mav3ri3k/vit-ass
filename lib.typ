@@ -1,9 +1,11 @@
 /*
   https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
 */
-#let blue = rgb("#1e66f5")
-#let surface0 = oklch(90%, 0.02, 275deg)
-#let base = rgb("#eff1f5")
+
+#let color_deg = 290deg
+#let primary = oklch(50%, 0.22, color_deg)
+#let surface0 = oklch(94%, 0.015, color_deg)
+#let base = oklch(98%, 0.01, color_deg)
 
 // automatically keep track of question number
 #let counter_questions = counter("questions")
@@ -19,7 +21,7 @@
 #let tag(body) = {
   box(
     radius: radius,
-    stroke: 1pt + blue,
+    stroke: 1pt + primary,
     inset: (x: 0.5em, y: 0.3em),
   )[
     #body
@@ -72,7 +74,7 @@
       inset: (x: 0.5em, y: 0.5em),
     )[
       #align(
-        center, [*#ctitle*]
+        center, [#text(weight: "semibold")[#ctitle]]
       )
     ]
 
@@ -120,11 +122,11 @@
 ) = {
   // Define metadados do documento
 
-  show link: it => text(fill: blue, weight: "semibold")[
+  show link: it => text(fill: primary, weight: "semibold")[
     #it
   ]
-  show ref: it => text(fill: blue)[#it]
-  show highlight: it => text(fill: blue)[*#it.body*]
+  show ref: it => text(fill: primary)[#it]
+  show highlight: it => text(fill: primary)[*#it.body*]
 
   show raw: code => if code.block [
     #set text(font: "JetBrainsMono NF", fallback: false, size: 11pt)
@@ -208,7 +210,7 @@ margin: 2cm,
     it
   }
 
-  set text(blue)
+  set text(primary)
   outline(depth: 2, title: text(black)[Contents])
   set text(black)
 
