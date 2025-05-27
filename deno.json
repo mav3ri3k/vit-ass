@@ -1,5 +1,0 @@
-{
-  "imports": {
-    "@lezer/markdown": "npm:@lezer/markdown@^1.4.0"
-  }
-}

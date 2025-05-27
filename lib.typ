@@ -1,8 +1,14 @@
-#let blue = rgb("#0065e0")
-#let bg = rgb("#f2f4f7")
+/*
+  Colors are based on Cattppuccin: "Latte"
+  https://catppuccin.com/palette/
+  https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
+*/
+#let blue = rgb("#1e66f5")
+#let lavender = rgb("#7287fd")
+#let surface0 = rgb("#ccd0da")
+#let base = rgb("#eff1f5")
 
-#let counter_codes = counter("codes")
-
+// automatically keep track of question number
 #let counter_questions = counter("questions")
 #let question() = text[
   #counter_questions.step()
@@ -12,42 +18,100 @@
 #let radius = 15pt
 #let radius-smol = 10pt
 
-#let code-block(ctitle: "Code", cbody) = {
+// single tag
+#let tag(body) = {
+  box(
+    radius: radius,
+    stroke: 1pt + blue,
+    inset: (x: 0.5em, y: 0.3em),
+  )[
+    #body
+  ]
+}
+
+// Array of tags
+// Example: tags("nvim", "vim", "helix")
+#let tags(..items) = {
+  for item in items.pos() {
+    tag(item); h(0.4em)
+  }
+}
+
+#let card(type, cbody) = {
+  if type == "filled" {
+    block(
+      fill: surface0,
+      breakable: true,
+      radius: radius,
+      width: 100%,
+      inset: (x: 1em, y: 0.65em),
+    )[#cbody]
+  } else if type == "outlined" {
+    block(
+      clip: true,
+      breakable: true,
+      radius: radius,
+      width: 100%,
+      stroke: 2pt + surface0,
+      inset: (x: 1em, y: 0.65em),
+    )[#cbody]
+  }
+}
+
+#let code-card(ctitle: "Code", cbody) = {
   block(
     clip: true,
     breakable: true,
     radius: radius,
-    stroke: 2pt + bg,
+    stroke: 2pt + surface0,
+    inset: 4pt,
   )[
     #block(
-      fill: bg,
+      fill: surface0,
       breakable: false,
       width: 100%,
+      radius: radius,
       spacing: 0pt,
-      inset: (x: 1em, y: 0.65em),
+      inset: (x: 0.5em, y: 0.5em),
     )[
-      *#counter_codes.step()
-      Code #context counter_questions.display(): #ctitle*
+      #align(
+        center, [*#ctitle*]
+      )
     ]
 
     #block(
       width: 100%,
       breakable: true,
-      inset: (x: 1em, y: 0.65em),
+      inset: (x: 0.5em, y: 0.65em),
     )[
       #cbody
     ]
   ]
 }
 
-#let cblock(cbody) = {
+#let image-card(ctitle, path) = {
+  show image: img => block(
+    radius: radius,
+    clip: true,
+  )[#img]
+
   block(
-    fill: bg,
-    breakable: true,
-    radius: radius-smol,
+    breakable: false,
     width: 100%,
-    inset: (x: 1em, y: 0.65em),
-  )[#cbody]
+  )[
+    #image(path)
+
+    #align(center, [
+      #block(
+        breakable: false,
+        radius: radius,
+        fill: surface0,
+        inset: (x: 1em, y: 1em),
+      )[*#ctitle*]
+
+      ]
+    )
+  ]
 }
 
 #let assignment(
@@ -59,7 +123,9 @@
 ) = {
   // Define metadados do documento
 
-  show link: it => text(fill: blue)[#it]
+  show link: it => text(fill: blue, weight: "semibold")[
+    #it
+  ]
   show ref: it => text(fill: blue)[#it]
   show highlight: it => text(fill: blue)[*#it.body*]
 
@@ -84,13 +150,13 @@
     )[#code]
   ]
 
-  set text(font: "Nebula Sans", fallback: false, size: 12pt)
-
-  // rounded images
-  show image: it => block(
+  show image: img => block(
     radius: radius,
     clip: true,
-  )[#it]
+  )[#img]
+
+  set page(fill: base)
+  set text(font: "Nebula Sans", fallback: false, size: 12pt)
 
   set document(title: title, author: author)
   set page(
@@ -106,12 +172,12 @@ margin: 2cm,
     leading: 0.65em,
     linebreaks: "optimized",
   )
-  set heading(numbering: "1.1.1")
+  set heading(numbering: "1.a.i")
   set math.equation(numbering: "(1)")
 
 
   block(
-    fill: bg,
+    fill: surface0,
     breakable: true,
     radius: radius,
     width: 100%,
