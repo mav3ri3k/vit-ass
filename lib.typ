@@ -1,11 +1,8 @@
 /*
-  Colors are based on Cattppuccin: "Latte"
-  https://catppuccin.com/palette/
   https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
 */
 #let blue = rgb("#1e66f5")
-#let lavender = rgb("#7287fd")
-#let surface0 = rgb("#ccd0da")
+#let surface0 = oklch(90%, 0.02, 275deg)
 #let base = rgb("#eff1f5")
 
 // automatically keep track of question number

@@ -25,7 +25,7 @@
 #link("https://github.com/mav3ri3k/college")
 
 #code-card(
-  ctitle: "main.l",
+  ctitle: "main.c",
   ```c
 #include <stdio.h>
 
